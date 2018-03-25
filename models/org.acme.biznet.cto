@@ -1,0 +1,35 @@
+/**
+ * My commodity trading network
+ */
+namespace org.acme.biznet
+
+
+concept transfer {
+  o String addressTo
+  o Double Amount
+}
+
+concept Wallet {
+  o String address
+  o Double Balance
+
+}
+asset transferAsset identified by transactionId {
+  o String transactionId
+  o transfer transfer
+  o DateTime date
+  o String Status
+  o Wallet fromWallet
+}
+
+transaction confirmTranswer  {
+  o String newStatus
+  o transfer transfer
+}
+
+participant User identified by userId {
+    o String userId
+    o String firstName
+    o String lastName
+    o Wallet wallet
+}
